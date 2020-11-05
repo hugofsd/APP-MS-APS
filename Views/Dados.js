@@ -14,19 +14,19 @@ export default function Dados() {
 
     const [ task, setTask] = useState([
 
-        {key:1, task:"Mapa Geográfico (LV1)"},
+        {key:1, title:"Mapa Geográfico", local:'SP', discu:'A', status:'ok', lvl:'1'  },
 
-        {key:2, task:"Levantamento anual (LV1)"},
+        {key:2, title:"Levantamento anual", local:'RJ', discu:'B', status:'ok', lvl:'1'},
 
-        {key:3, task:"Propriedades monitoradas (LV2)"},
+        {key:3, title:"Propriedades monitoradas", local:'RJ', discu:'C', status:'Atenção', lvl:'2' },
 
-        {key:4, task:"Agrotóxicos encontrados (LV2)"},
+        {key:4, title:"Agrotóxicos encontrados", local:'MG', discu:'D', status:'Atenção', lvl:'2'  },
 
-        {key:5, task:"Busca e apreensão(LV3)"},
+        {key:5, title:"Busca e apreensão", local:'MG', discu:'E', status:'Importante', lvl:'3'},
 
-        {key:6, task:"Dados de proprietários (LV3)"},
+        {key:6, title:"Dados de proprietários",  local:'SP', discu:'G', status:'Importante', lvl:'3'},
 
-        {key:7, task:"Planejamento de monitoramento (LV3)"},
+        {key:7, title:"Planejamento de monitoramento", local:'SP', discu:'H', status:'Importante', lvl:'3' },
 
 
     ]);
@@ -42,15 +42,10 @@ export default function Dados() {
            data={task}
            keyExtractor={(item) => String(item.key) }
            renderItem={ ({ item }) => <TaskList data={item}/> }
-           
+
            />
-             
 
         </SafeAreaView>
-        
     ) 
-        
-    
-
 
 }

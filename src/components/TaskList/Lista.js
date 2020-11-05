@@ -1,20 +1,43 @@
-import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import {
+    View,
+    Text,
+    StyleSheet,
+    TouchableOpacity,
+    Button
+} from 'react-native';
+import Modal from 'react-native-modal';
 import { Ionicons } from '@expo/vector-icons';
 
 export default function TaskList({ data }) {
+    
+    const [visible, setVisible] = useState(false)
+    
     return (
         <View style={styles.container}>
-            <TouchableOpacity>
+
+            <Modal isVisible={visible}>
+                <View style={styles.modal}>
+                    <Text style={styles.task}>Dados: {data.title}</Text>
+                    <Text style={styles.task}>Localização: {data.local}</Text>
+                    <Text style={styles.task}>Discussão: {data.discu}</Text>
+                    <Text style={styles.task}>Status: {data.status}</Text>
+                    <Text style={styles.task}>Nivel: {data.lvl}</Text>
+                    
+                    <Button  title='fechar'  onPress={() => {setVisible(false)}}  />
+                </View>
+
+            </Modal>
+
+
+            <TouchableOpacity
+            onPress={() => {setVisible(true)}}>
                 <Ionicons name="md-checkmark-circle" size={30} color="#121212" />
             </TouchableOpacity>
             <View>
-                <Text style={styles.task}> {data.task}</Text>
+                <Text style={styles.task}> {data.title}</Text>
 
             </View>
-
-
-
 
         </View>
 
@@ -48,6 +71,10 @@ const styles = StyleSheet.create({
 
 
 
+    },
+
+    modal: {
+        backgroundColor: '#fff'
     }
 
 
