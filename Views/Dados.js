@@ -9,8 +9,22 @@ import {
 import { css } from '../assets/css/css';
 import { useState } from 'react';
 import TaskList from '../src/components/TaskList/Lista';
+import api from '../service/api';
+
 
 export default function Dados() {
+
+    function dados() {
+        api.get("/infos").then(response => {
+            console.log(response.data);
+        })
+            .catch(e => {
+                console.log(e);
+            })
+    };
+    dados();
+
+    
 
     const [ task, setTask] = useState([
 

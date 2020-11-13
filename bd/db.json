@@ -1,0 +1,21 @@
+{
+  "users": [
+    {"username": "bruno_queiroz", "password": "N2927A6", "nivel": "3"},
+    {"username": "carla_sousa", "password": "N276169", "nivel": "2"},
+    {"username": "caique_alves", "password": "N28291", "nivel": "1"},
+    {"username": "hugo_frança", "password": "N2393D3", "nivel": "3"},
+    {"username": "murilo_moreno", "password": "D771BD3", "nivel": "2"}
+  ],
+  "infos": [
+    {"status": "Grave", "localization": "Corupá-Santa Catarina", "description": "Uso de Thiram agredindo Rio Itajaí-açu.", "nivel": "3"},
+    {"status": "Moderado", "localization": "Ouro Preto-Minas Gerais", "description": "Uso do Vigga que está infiltrando no lençol freático.", "nivel": "2"},
+    {"status": "Leve", "localization": "Maracaju-Mato Grosso do Sul", "description": "Uso de Aclonifem suspeito.", "nivel": "1"},
+    {"status": "Leve", "localization": "Dianópolis-Tocantis", "description": "Uso exagerado de Carbaril.", "nivel": "1"},
+    {"status": "Moderado", "localization": "Feijó-Acre", "description": "Uso de Fipronil atingindo Rio Juruá.", "nivel": "2"},
+    {"status": "Grave", "localization": "Anápolis-Goiás", "description": "Uso de Tricolfon.", "nivel": "3"},
+    {"status": "Grave", "localization": "Trindade-Goiás", "description": "Uso de Carbofuran.", "nivel": "3"},
+    {"status": "Moderado", "localization": "Suzano-São Paulo", "description": "Uso de Clorpirifós afetando Rio Guaió.", "nivel": "2"},
+    {"status": "Leve", "localization": "Alagoinhas-Bahia", "description": "Uso de forma inapropridade de IPBC", "nivel": "1"},
+    {"status": "Grave", "localization": "Carlos Barbosa-Rio Grande do Sul", "description": "Uso de Fosmete afetando lençol freático.", "nivel": "3"} 
+  ]
+}

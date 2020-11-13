@@ -8,8 +8,19 @@ import {
 } from 'react-native';
 import Modal from 'react-native-modal';
 import { Ionicons } from '@expo/vector-icons';
+import api from '../../../service/api';
 
-export default function TaskList({ data }) {
+export default function TaskList({dados}) {
+
+    function dados() {
+        api.get("/infos").then(response => {
+            console.log(response.data);
+        })
+            .catch(e => {
+                console.log(e);
+            })
+    };
+    dados();
     
     const [visible, setVisible] = useState(false)
     
@@ -18,11 +29,9 @@ export default function TaskList({ data }) {
 
             <Modal isVisible={visible}>
                 <View style={styles.modal}>
-                    <Text style={styles.task}>Dados: {data.title}</Text>
-                    <Text style={styles.task}>Localização: {data.local}</Text>
-                    <Text style={styles.task}>Discussão: {data.discu}</Text>
-                    <Text style={styles.task}>Status: {data.status}</Text>
-                    <Text style={styles.task}>Nivel: {data.lvl}</Text>
+                    <Text style={styles.task}>Status: {dados.status}</Text>
+                    <Text style={styles.task}>Localização: {dados.localization}</Text>
+                    <Text style={styles.task}>Nivel: {dados.nivel}</Text>
                     
                     <Button  title='fechar'  onPress={() => {setVisible(false)}}  />
                 </View>
@@ -35,7 +44,7 @@ export default function TaskList({ data }) {
                 <Ionicons name="md-checkmark-circle" size={30} color="#121212" />
             </TouchableOpacity>
             <View>
-                <Text style={styles.task}> {data.title}</Text>
+                <Text style={styles.task}> {dados.description}</Text>
 
             </View>
 
