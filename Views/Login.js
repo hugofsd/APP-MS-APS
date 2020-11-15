@@ -31,74 +31,86 @@ export default function Login(props) {
            // let nivel;
             response.data.forEach(user => {
                 if (!loginOk) {
-                    loginOk = user.username === username && user.password === password;
-                   // nivel = user.nivel;
+                    loginOk = user.username ===
+                    username && user.password === password;
                 }
 
             });
             if (loginOk) {
-                console.log('senha valida');
+                salvar();
+                showUser();
                 props.navigation.navigate('Dados');
+                console.log('senha valida');
             } else {
                 console.log('senha invalida')
             }
-        })
+        }) 
             .catch(e => {
                 console.log(e);
             })
     };
 
+  async  function salvar(){
+        const usuario={
+            username, password
+        }
+       await AsyncStorage.setItem("usuario", JSON.stringify(usuario))
+    }
 
-    {
-        // useEffect(() => {
-        //     vefifyLogin();
-        // }, []);
+   async function showUser(){
+      const json = await AsyncStorage.getItem("usuario");
+      const usuario = JSON.parse(json)
 
-        //  useEffect(() => {
-        //   if (login === true) {
-        //          biometria()
-        //      }
-        //  }, [login]);
+      console.log(usuario)
 
-        // // // //verificar se o usuario já tem login
-        // async function vefifyLogin() {
-        //     let response = await AsyncStorage.getItem('username');
-        //     let json = await JSON.parse(response);
-        //     console.log(json);
-        //      if (json != null)
-        //      setUsername(username);
-        //      setPassword(password);
-        //      setLogin(true);
-        // }
-
-        // // biometria, verificar compatibilidade, se existe biometria cadastrada
-        // // e fazer autencicação 
-        // // bimetricrecors verifica se já existe biometria guardada
-        //  async function biometria() {
-        //      console.log('chamei a biometria');
-        // //     let compatible = await LocalAuthentication.hasHardwareAsync(); // se o cell tem digital
-        // //     if (compatible) {
-        // //         let bimetricrecors = await LocalAuthentication.isEnrolledAsync(); // se existe digital cadastrada
-        // //         if (!bimetricrecors) {
-        // //             alert('Biometria não cadastrada no celular');
-        // //         } else {
-        // //             let result = await LocalAuthentication.AuthenticationType(); // se a digital incluida é igaul a cadastrada no cel
-        // //             if (result.success) {
-        // //                 logar(); //login
-        // //             } else {
-        // //                 setUsername(null);
-        // //                 setPassword(null);
-        // //             }
-        // //         }
-        //     }
-
-        // // }
     }
 
 
+    
+        useEffect(() => {
+            vefifyLogin();
+        }, []);
 
+         useEffect(() => {
+          if (login === true) {
+                 biometria()
+             }
+         }, [login]);
 
+        // // //verificar se o usuario já tem login
+        async function vefifyLogin() {
+            let response = await AsyncStorage.getItem('usuario');
+            let json = await JSON.parse(response);
+            console.log(json);
+             if (json != null)
+             setUsername(username);
+             setPassword(password);
+             setLogin(true);
+        }
 
+        // biometria, verificar compatibilidade, se existe biometria cadastrada
+        // e fazer autencicação 
+        // bimetricrecors verifica se já existe biometria guardada
+         async function biometria() {
+             console.log('chamei a biometria');
+             let compatible = await LocalAuthentication.hasHardwareAsync(); // se o cell tem digital
+             if (compatible) {
+             let bimetricreRecors = await LocalAuthentication.isEnrolledAsync(); // se existe digital cadastrada
+               if (!bimetricreRecors) {
+                   alert('Biometria não cadastrada no celular');
+                 } else {
+                    let result = await LocalAuthentication.authenticateAsync(); // se a digital incluida é igaul a cadastrada no cel
+                     if (result.success) {
+                        logar(); //login
+                     } else {
+                    setUsername(null);
+                         setPassword(null);
+                     }
+                 }
+            }
+
+         }
+   
 
     return (
         <KeyboardAvoidingView style={[css.container, css.darkbg]}>
@@ -106,6 +118,7 @@ export default function Login(props) {
                 <Image source={require('../assets/img/logo.jpg')} />
 
             </View>
+            <Text>hugo_frança N2393D3</Text>
             <Text> {username} {password}</Text>
 
             {/* <View >
@@ -113,13 +126,30 @@ export default function Login(props) {
             </View> */}
 
             <View style={css.login__form}>
-                <TextInput style={css.login__input} placeholder='Usuário' onChangeText={text => setUsername(text)} />
-                <TextInput style={css.login__input} placeholder='Senha' onChangeText={text => setPassword(text)} secureTextEntry={true} />
+                <TextInput 
+                value={username}
+                style={css.login__input} placeholder='Usuário'
+                 onChangeText={text => setUsername(text)}
+                 
+                 
+                 />
+                <TextInput
+                value={password}
+                style={css.login__input} placeholder='Senha'
+                 onChangeText={text => setPassword(text)} secureTextEntry={true} />
 
                 <TouchableOpacity style={css.login__button}
                  onPress={() => (logar())}>
-                    <Text style={css.login__buttonText}>Entrar</Text>
+                <Text style={css.login__buttonText}>Entrar</Text>
                 </TouchableOpacity>
+
+                {/* <TouchableOpacity style={css.login__button}
+                 onPress={showUser}>
+                <Text style={css.login__buttonText}>Console user</Text>
+                </TouchableOpacity> */}
+
+
+
 
 
             </View>
