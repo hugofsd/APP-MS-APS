@@ -6,7 +6,9 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 
 //telas
-import {Home, Login, Dados} from './Views'
+import {Home, Login, Dados} from './Views';
+import DadosDois from './Views/DadosDois';
+import DadosTres from './Views/DadosTres';
 
 
 
@@ -17,8 +19,6 @@ export default function App() {
   return(
     <NavigationContainer>
     <Stack.Navigator>
-
-    <Stack.Screen name="Login"  component={Login} />
 
     <Stack.Screen name="Home"
      component={Home}
@@ -32,12 +32,14 @@ export default function App() {
          fontWeight:'bold', alignSelf:'center'
        },
 
-     }} />
+     }} />  
+
+<Stack.Screen name="Login"  component={Login} />
     
     <Stack.Screen name="Dados"
      component={Dados} 
     options={{
-      title: "Dados Autorizados",
+      title: "Usuário Nível 1",
       headerStyle: {
         backgroundColor: "#fff"
       },
@@ -47,6 +49,33 @@ export default function App() {
       },
     }}
    />
+
+<Stack.Screen
+ name="DadosDois"
+component={DadosDois}
+options={{
+  title: "Usuário Nível 2",
+  headerStyle: {
+    backgroundColor: "#fff"
+  },
+  headerTintColor:'#006400',
+  headerTitleStyle: {
+    fontWeight:'bold'
+  },
+}} />
+
+<Stack.Screen name="DadosTres"
+  component={DadosTres}
+  options={{
+    title: "Usuário Nível 3",
+    headerStyle: {
+      backgroundColor: "#fff"
+    },
+    headerTintColor:'#006400',
+    headerTitleStyle: {
+      fontWeight:'bold'
+    },
+  }} />
      
      
     
