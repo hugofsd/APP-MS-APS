@@ -1,17 +1,11 @@
 import React from 'react';
 import {
-    Text,
-    View,
     SafeAreaView,
-    TouchableOpacity,
     FlatList
 } from 'react-native';
 import { css } from '../assets/css/css';
 import { useState } from 'react';
 import TaskList from '../src/components/TaskList/Lista';
-import api from '../service/api';
-import Teste from './Teste'
-import { Component } from 'react';
 
 
 export default function Dados() {

@@ -1,10 +1,7 @@
 import React from 'react';
 import {
-    Button,
-    StyleSheet,
     Text,
     View,
-    Alert,
     TouchableOpacity,
     Image
 } from 'react-native';

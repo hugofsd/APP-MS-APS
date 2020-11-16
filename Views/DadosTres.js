@@ -1,9 +1,6 @@
 import React from 'react';
 import {
-    Text,
-    View,
     SafeAreaView,
-    TouchableOpacity,
     FlatList
 } from 'react-native';
 import { css } from '../assets/css/css';

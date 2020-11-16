@@ -1,11 +1,7 @@
-import { Assets } from '@react-navigation/stack';
 import React, { useState, useEffect } from 'react';
 import {
-    Button,
-    StyleSheet,
     Text,
     View,
-    Alert,
     KeyboardAvoidingView,
     Image,
     TextInput,
@@ -82,52 +78,7 @@ export default function Login(props) {
         console.log(usuario) 
 
     }   
-    async function bio(){
-        const json = await AsyncStorage.getItem("usuario");
-        const usuario = JSON.parse(json)
-        console.log(usuario)
-
-        api.get("/users").then(response => {
-             let loginOk = false;
-             // let nivel;
-             response.data.forEach(user => {
-                 if (!loginOk) {
-                     loginOk = user.username ===
-                     usuario.username && user.password === usuario.password &&
-                         user.nivel === usuario.nivel;
-                 }
- 
-             });
-             if (loginOk) {
-                 
-                if (nivel == 1) {
-                 salvar();
-                     console.log('senha valida');
-                     props.navigation.navigate('Dados')
- 
-                 } 
-                 if (nivel == 2) {
-                     salvar();
-                     console.log('senha valida');
-                     props.navigation.navigate('DadosDois')
- 
-                 } 
-                 if (nivel == 3) {
-                     salvar();
-                     console.log('senha valida');
-                     props.navigation.navigate('DadosTres')
- 
-                 }
-             }
-             else {
-                 console.log('senha invalida')
-             }
-         })
-             .catch(e => {
-                 console.log(e);
-             })
-
-    }
+    
 
     useEffect(() => {
         vefifyLogin();
