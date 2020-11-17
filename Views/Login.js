@@ -19,9 +19,9 @@ export default function Login(props) {
     const [nivel, setNivel] = useState(null);
     const [login, setLogin] = useState(false);
 
+    // responsavel por logar comparar os dados
     function logar() { 
         api.get("/users").then(response => {
-           // console.log(response.data);
             let loginOk = false;
             response.data.forEach(user => {
                 if (!loginOk) {
@@ -29,7 +29,6 @@ export default function Login(props) {
                         username && user.password === password &&
                         user.nivel === nivel;
                 }
-
             });
             if (loginOk) {
                if (nivel == 1) {
@@ -37,21 +36,17 @@ export default function Login(props) {
                 showUser();
                     console.log('senha valida');
                     props.navigation.navigate('Dados')
-                    
-
                 } 
                 if (nivel == 2) {
                     salvar();
                     console.log('senha valida');
                     props.navigation.navigate('DadosDois')
-
                 } 
                 if (nivel == 3) {
                     salvar();
                     console.log('senha valida');
                     props.navigation.navigate('DadosTres')
                     login===true
-
                 }
             }
             else {
@@ -63,6 +58,7 @@ export default function Login(props) {
             })
     };
 
+    // Salvar os dados digitados
     async function salvar() {
         const usuario = {
             username, password, nivel
@@ -71,6 +67,7 @@ export default function Login(props) {
     }
     
 
+    // Visualizar os dados no terminal
     async function showUser() {
         const json = await AsyncStorage.getItem("usuario");
         const usuario = JSON.parse(json)
@@ -101,20 +98,22 @@ export default function Login(props) {
         setLogin(true);
     }
 
-    // biometria, verificar compatibilidade, se existe biometria cadastrada
-    // e fazer autencicação 
-    // bimetricrecors verifica se já existe biometria guardada
+  // Função que habilita a biometria
     async function biometria() {
         console.log('chamei a biometria');
-        let compatible = await LocalAuthentication.hasHardwareAsync(); // se o cell tem digital
+        // se o cell tem digital
+        let compatible = await LocalAuthentication.hasHardwareAsync(); 
         if (compatible) {
-            let bimetricreRecors = await LocalAuthentication.isEnrolledAsync(); // se existe digital cadastrada
+            // se existe digital cadastrada
+            let bimetricreRecors = await LocalAuthentication.isEnrolledAsync(); 
             if (!bimetricreRecors) {
                 alert('Biometria não cadastrada no celular');
             } else {
-                let result = await LocalAuthentication.authenticateAsync(); // se a digital incluida é igaul a cadastrada no cel
+                // se a digital incluida é igaul a cadastrada no cel
+                let result = await LocalAuthentication.authenticateAsync(); 
                 if (result.success) {
-                    logar(); //login
+                    logar(); 
+                 //ativar a função login se todas as informações estão corretas
                 } else {
                     setUsername(null); 
                     setPassword(null); 
@@ -155,9 +154,6 @@ export default function Login(props) {
             </View>
         </KeyboardAvoidingView>
 
-
     );
-
-      
 
 }
