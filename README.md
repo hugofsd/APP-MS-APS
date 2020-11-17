@@ -5,9 +5,9 @@ Usar a biometria, login, senha e código que corresponde ao nível do usuário p
 
 ## App
 
-[![Demo CountPages alpha](https://share.gifyoutube.com/KzB6Gb.gif)](https://www.youtube.com/watch?v=ua6CmXjUWuE)
+[![Demo CountPages alpha](https://j.gifs.com/P7371W.gif)](https://www.youtube.com/watch?v=ua6CmXjUWuE)
 
-
+Teste completo: https://www.youtube.com/watch?v=ua6CmXjUWuE&t=2s
 ## Front-end
 
 Instalação do [NodeJS](https://nodejs.org/en/) 
