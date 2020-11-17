@@ -11,6 +11,14 @@ Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
 npm start
 ```
 
+## Run Back-end
+
+Use the package manager [pip](https://pip.pypa.io/en/stable/) to install foobar.
+
+```bash
+json-server -H seu ip -p 4000 db.json
+```
+
 ## Usage
 
 ```python
